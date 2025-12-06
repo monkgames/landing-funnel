@@ -37,6 +37,22 @@ type Playbook = {
 	body: string
 }
 
+type BusinessOutcome = {
+	metric: string
+	label: string
+	note: string
+}
+
+type LogoMini = {
+	label: string
+}
+
+type MiniTestimonial = {
+	quote: string
+	source: string
+	role: string
+}
+
 type SolutionsContent = {
 	hero: {
 		badge: string
@@ -48,6 +64,11 @@ type SolutionsContent = {
 		title: string
 		subtitle: string
 		items: Pillar[]
+	}
+	businessOutcomes: {
+		title: string
+		subtitle: string
+		items: BusinessOutcome[]
 	}
 	audiences: {
 		title: string
@@ -64,6 +85,12 @@ type SolutionsContent = {
 		subtitle: string
 		items: Playbook[]
 	}
+	proof: {
+		title: string
+		subtitle: string
+		logos: LogoMini[]
+		testimonials: MiniTestimonial[]
+	}
 	trust: {
 		title: string
 		subtitle: string
@@ -79,18 +106,18 @@ type SolutionsContent = {
 const solutionsContent: SolutionsContent = {
 	hero: {
 		badge: 'Solutions for Operators, Platforms & Studios',
-		title: 'Crash & Instant-Lotto solutions built for real-money ecosystems.',
+		title: 'Map engines, themes, and console to a solution that fits your roadmap.',
 		subtitle:
-			'MonkGames gives you provably fair engines, culture-tuned themes, and an operator console that fits into regulated iGaming stacks — without turning your team into a games studio.',
+			'MonkGames gives you provably fair crash & instant-lotto engines, culture-tuned themes, and an operator console that fits regulated stacks — wrapped into solutions designed for how you actually operate.',
 		ctas: [
 			{
-				label: 'Explore Games',
-				href: '/games',
+				label: 'Get a Solution Plan',
+				href: '/#partner',
 				variant: 'primary',
 			},
 			{
-				label: 'Talk to the Team',
-				href: '/#partner',
+				label: 'Explore Games',
+				href: '/games',
 				variant: 'secondary',
 			},
 		],
@@ -132,6 +159,33 @@ const solutionsContent: SolutionsContent = {
 					'Real-time logs and dashboards for events and outcomes.',
 					'Config change history for full auditability.',
 				],
+			},
+		],
+	},
+	businessOutcomes: {
+		title: 'What partners typically achieve with MonkGames',
+		subtitle:
+			'Directional ranges based on modeling and early operator tests. Use your own numbers to build a precise case.',
+		items: [
+			{
+				metric: '+10–20%',
+				label: 'GGR uplift on crash & ritual games',
+				note: 'From optimized loops, higher perceived fairness, and tuned themes.',
+			},
+			{
+				metric: '×2–3 faster',
+				label: 'Time from integration to first live market',
+				note: 'Engines, themes, and console working together from day one.',
+			},
+			{
+				metric: '↑ retention',
+				label: 'Players return for themed, ritualized experiences',
+				note: 'Festival and region-specific themes that feel truly “for them”.',
+			},
+			{
+				metric: '↓ disputes',
+				label: 'Fewer tickets about outcomes and fairness',
+				note: 'OpenRNG proofs and operator-visible logs reduce confusion.',
 			},
 		],
 	},
@@ -226,6 +280,34 @@ const solutionsContent: SolutionsContent = {
 			},
 		],
 	},
+	proof: {
+		title: 'Trusted by early partners across markets',
+		subtitle:
+			'Names may be anonymised, but the patterns are real: multi-brand platforms, regional operators, and studios betting on crash & lotto.',
+		logos: [
+			{ label: 'Operator A' },
+			{ label: 'Platform B' },
+			{ label: 'Aggregator C' },
+			{ label: 'Casino D' },
+		],
+		testimonials: [
+			{
+				quote: 'We slotted MonkGames into our existing wallet stack without rewriting our platform.',
+				source: 'CTO',
+				role: 'Multi-brand platform',
+			},
+			{
+				quote: 'Festival-themed draws became the backbone of our local calendar.',
+				source: 'Head of Product',
+				role: 'India-focused operator',
+			},
+			{
+				quote: 'As a studio, we focus on stories. MonkGames keeps the rails fair and stable.',
+				source: 'Studio Founder',
+				role: 'Content partner',
+			},
+		],
+	},
 	trust: {
 		title: 'Fairness, compliance & long-term alignment',
 		subtitle:
@@ -239,12 +321,12 @@ const solutionsContent: SolutionsContent = {
 		],
 	},
 	finalCta: {
-		title: 'Which MonkGames solution fits your roadmap?',
+		title: 'Get a MonkGames solution plan for your platform.',
 		subtitle:
-			'Tell us about your platforms, markets, and timelines. We’ll map a solution — engines, themes, and console — that fits where you are now and where you want to go.',
+			'Share your markets, brands, and timelines. We’ll propose how engines, themes, and console fit — plus an integration path you can execute.',
 		ctas: [
 			{
-				label: 'Talk to the Team',
+				label: 'Get a Solution Plan',
 				href: '/#partner',
 				variant: 'primary',
 			},
@@ -279,9 +361,11 @@ export default function SolutionsPage() {
 	const {
 		hero,
 		pillars,
+		businessOutcomes,
 		audiences,
 		integrationModels,
 		playbooks,
+		proof,
 		trust,
 		finalCta,
 	} = solutionsContent
@@ -403,6 +487,24 @@ export default function SolutionsPage() {
 					</div>
 				</section>
 
+				{/* BUSINESS OUTCOMES */}
+				<section className="section">
+					<h2 className="section__title">{businessOutcomes.title}</h2>
+					<p className="section__subtitle">
+						{businessOutcomes.subtitle}
+					</p>
+
+					<div className="grid grid--four">
+						{businessOutcomes.items.map(item => (
+							<article key={item.label} className="card">
+								<h3 className="card__title">{item.metric}</h3>
+								<p className="card__body">{item.label}</p>
+								<p className="card__body">{item.note}</p>
+							</article>
+						))}
+					</div>
+				</section>
+
 				{/* AUDIENCES */}
 				<section className="section">
 					<h2 className="section__title">{audiences.title}</h2>
@@ -457,6 +559,48 @@ export default function SolutionsPage() {
 							<article key={item.title} className="card">
 								<h3 className="card__title">{item.title}</h3>
 								<p className="card__body">{item.body}</p>
+							</article>
+						))}
+					</div>
+				</section>
+
+				{/* PROOF: LOGOS + MINI TESTIMONIALS */}
+				<section className="section">
+					<h2 className="section__title">{proof.title}</h2>
+					<p className="section__subtitle">{proof.subtitle}</p>
+
+					<div
+						style={{
+							display: 'flex',
+							flexWrap: 'wrap',
+							gap: '0.75rem',
+							marginTop: '1rem',
+							marginBottom: '1.5rem',
+						}}>
+						{proof.logos.map(l => (
+							<div
+								key={l.label}
+								style={{
+									padding: '0.4rem 0.8rem',
+									borderRadius: 999,
+									border: '1px solid var(--border-subtle)',
+									fontSize: '0.8rem',
+									textTransform: 'uppercase',
+									letterSpacing: '0.05em',
+									opacity: 0.9,
+								}}>
+								{l.label}
+							</div>
+						))}
+					</div>
+
+					<div className="grid grid--three">
+						{proof.testimonials.map(t => (
+							<article key={t.quote} className="card">
+								<p className="card__body">“{t.quote}”</p>
+								<p className="card__body">
+									<strong>{t.source}</strong> · {t.role}
+								</p>
 							</article>
 						))}
 					</div>
