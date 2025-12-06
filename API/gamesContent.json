@@ -115,7 +115,7 @@
 				},
 				{
 					"label": "Play Demo",
-					"href": "/games/crossroad-escapables#demo",
+					"href": "/games/crossroad-escapables/demo",
 					"variant": "secondary"
 				},
 				{
@@ -162,7 +162,7 @@
 				},
 				{
 					"label": "Play Demo",
-					"href": "/games/drawballz-rushmore#demo",
+					"href": "/games/drawballz-rushmore/demo",
 					"variant": "secondary"
 				},
 				{

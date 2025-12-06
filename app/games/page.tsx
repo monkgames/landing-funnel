@@ -212,6 +212,7 @@ export default function GamesPage() {
 
 					<nav className="home-header__nav">
 						<ul>
+							
 							<li>
 								<a href="/games">Games</a>
 							</li>
