@@ -176,16 +176,20 @@ export default function EngineDocsPage() {
 					<nav className="home-header__nav">
 						<ul>
 							<li>
-								<a href="/games">Games</a>
+								<a href="/platform">Platform</a>
 							</li>
 							<li>
 								<a href="/solutions">Solutions</a>
 							</li>
 							<li>
+								<a href="/games">Games</a>
+							</li>
+
+							<li>
 								<a href="/marketplace">Marketplace</a>
 							</li>
-							<li className="home-header__nav-item--active">
-								<a href="/docs">Docs</a>
+							<li>
+								<a href="/resources">Resources</a>
 							</li>
 						</ul>
 					</nav>

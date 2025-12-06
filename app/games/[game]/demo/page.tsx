@@ -139,16 +139,20 @@ export default function GameDemoPage() {
 					<nav className="home-header__nav">
 						<ul>
 							<li>
-								<a href="/games">Games</a>
+								<a href="/platform">Platform</a>
 							</li>
 							<li>
 								<a href="/solutions">Solutions</a>
 							</li>
 							<li>
+								<a href="/games">Games</a>
+							</li>
+
+							<li>
 								<a href="/marketplace">Marketplace</a>
 							</li>
 							<li>
-								<a href="/docs">Resources</a>
+								<a href="/resources">Resources</a>
 							</li>
 						</ul>
 					</nav>

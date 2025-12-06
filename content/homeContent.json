@@ -3,8 +3,9 @@
 		"brand": "MonkGames",
 		"logo": "https://picsum.photos/seed/monk-logo/160/40",
 		"navLinks": [
-			{ "label": "Games", "href": "/games" },
+			{ "label": "Platform", "href": "/platform" },
 			{ "label": "Solutions", "href": "/solutions" },
+			{ "label": "Games", "href": "/games" },
 			{ "label": "Marketplace", "href": "/marketplace" },
 			{ "label": "Resources", "href": "#resources" }
 		],
