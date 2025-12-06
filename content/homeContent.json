@@ -12,7 +12,7 @@
 		"actions": [
 			{
 				"label": "Become Partner",
-				"href": "#partner",
+				"href": "/partner",
 				"variant": "primary"
 			},
 			{
@@ -294,7 +294,7 @@
 			},
 			{
 				"label": "Talk to the Team 🤝",
-				"href": "#partner",
+				"href": "/partner",
 				"variant": "secondary"
 			}
 		]

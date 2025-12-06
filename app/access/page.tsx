@@ -456,7 +456,7 @@ export default function OperatorConsolePage() {
 								<a href="/marketplace">Marketplace</a>
 							</li>
 							<li>
-								<a href="/docs">Resources</a>
+								<a href="/resources">Resources</a>
 							</li>
 						</ul>
 					</nav>
