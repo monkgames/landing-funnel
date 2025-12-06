@@ -1,0 +1,322 @@
+{
+	"crossroad-escapables": {
+		"id": "crossroad-escapables",
+		"name": "Crossroad Escapables",
+		"badge": "Crash Engine",
+		"heroTitle": "Crossroad Escapables — Crash Engine Integration",
+		"heroSubtitle": "Real-time multiplier curves, fast round resolution, and OpenRNG-backed fairness for crash-style gameplay.",
+		"tags": ["Crash Game", "High-Volatility", "Streamer-Friendly"],
+		"quickStart": {
+			"title": "Crash Engine Quick Start",
+			"steps": [
+				{
+					"step": "1",
+					"title": "Create a Crash Round",
+					"description": "From your backend, call POST /v1/engines/crossroad-escapables/rounds with the playerId, currency, and wager. Store the returned roundId in your own database."
+				},
+				{
+					"step": "2",
+					"title": "Subscribe to Round Updates",
+					"description": "Use webhooks or polling on GET /v1/engines/crossroad-escapables/rounds/{roundId} to track round state and crashPoint. Your frontend uses this to animate the curve."
+				},
+				{
+					"step": "3",
+					"title": "Handle Cashouts",
+					"description": "When a player presses “Cash Out”, send POST /v1/engines/crossroad-escapables/rounds/{roundId}/cashout from your backend. If successful, credit the payout to the player ledger."
+				},
+				{
+					"step": "4",
+					"title": "Settle & Reconcile",
+					"description": "Listen for round.completed webhooks to confirm final results. Use these events as a source of truth for accounting and dispute resolution."
+				}
+			]
+		},
+		"endpoints": {
+			"title": "Key Crash Engine Endpoints",
+			"items": [
+				{
+					"method": "POST",
+					"path": "/v1/engines/crossroad-escapables/rounds",
+					"summary": "Create a crash round",
+					"description": "Initialises a new crash round for a specific player and wager.",
+					"examples": [
+						{
+							"label": "Create round (curl)",
+							"language": "bash",
+							"code": "curl -X POST \"$BASE_URL/v1/engines/crossroad-escapables/rounds\" \\\n  -H \"Authorization: Bearer YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"playerId\": \"player_123\",\n    \"currency\": \"USDT\",\n    \"wager\": 5.0\n  }'"
+						},
+						{
+							"label": "Typical response (JSON)",
+							"language": "json",
+							"code": "{\n  \"roundId\": \"rnd_123\",\n  \"engine\": \"crossroad-escapables\",\n  \"state\": \"scheduled\",\n  \"wager\": 5.0,\n  \"currency\": \"USDT\",\n  \"createdAt\": \"2024-01-01T12:00:00Z\"\n}"
+						}
+					]
+				},
+				{
+					"method": "POST",
+					"path": "/v1/engines/crossroad-escapables/rounds/{roundId}/cashout",
+					"summary": "Submit a cashout",
+					"description": "Attempts to cash the player out before the crash point is reached.",
+					"examples": [
+						{
+							"label": "Cashout (curl)",
+							"language": "bash",
+							"code": "curl -X POST \"$BASE_URL/v1/engines/crossroad-escapables/rounds/rnd_123/cashout\" \\\n  -H \"Authorization: Bearer YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"playerId\": \"player_123\"\n  }'"
+						},
+						{
+							"label": "Cashout response",
+							"language": "json",
+							"code": "{\n  \"roundId\": \"rnd_123\",\n  \"playerId\": \"player_123\",\n  \"multiplier\": 2.75,\n  \"payout\": 13.75,\n  \"currency\": \"USDT\",\n  \"state\": \"cashed_out\"\n}"
+						}
+					]
+				},
+				{
+					"method": "GET",
+					"path": "/v1/engines/crossroad-escapables/rounds/{roundId}",
+					"summary": "Get round state",
+					"description": "Fetches the current or final state of a crash round.",
+					"examples": [
+						{
+							"label": "Get round (curl)",
+							"language": "bash",
+							"code": "curl \"$BASE_URL/v1/engines/crossroad-escapables/rounds/rnd_123\" \\\n  -H \"Authorization: Bearer YOUR_API_KEY\""
+						},
+						{
+							"label": "Round state response",
+							"language": "json",
+							"code": "{\n  \"roundId\": \"rnd_123\",\n  \"engine\": \"crossroad-escapables\",\n  \"state\": \"completed\",\n  \"crashPoint\": 3.42,\n  \"createdAt\": \"2024-01-01T12:00:00Z\",\n  \"completedAt\": \"2024-01-01T12:00:10Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		"parameters": {
+			"title": "Common Request Parameters",
+			"items": [
+				{
+					"name": "playerId",
+					"type": "string",
+					"location": "body",
+					"required": true,
+					"description": "Your internal identifier for the player account."
+				},
+				{
+					"name": "currency",
+					"type": "string",
+					"location": "body",
+					"required": true,
+					"description": "ISO code or token symbol used for wagers (e.g. USD, EUR, USDT)."
+				},
+				{
+					"name": "wager",
+					"type": "number",
+					"location": "body",
+					"required": true,
+					"description": "Amount to stake on the round in the smallest unit of the selected currency."
+				},
+				{
+					"name": "roundId",
+					"type": "string",
+					"location": "path",
+					"required": true,
+					"description": "Identifier of the crash round returned from the create call."
+				}
+			]
+		},
+		"webhooks": {
+			"title": "Crash Engine Webhooks",
+			"subtitle": "Use these events to update balances and analytics in real time.",
+			"events": [
+				{
+					"event": "round.created",
+					"description": "Emitted when a crash round is created and scheduled."
+				},
+				{
+					"event": "round.crashed",
+					"description": "Fires when the multiplier reaches the crash point."
+				},
+				{
+					"event": "round.completed",
+					"description": "Contains final settlement information including payout multipliers and results."
+				}
+			],
+			"samplePayload": "{\n  \"event\": \"round.completed\",\n  \"engine\": \"crossroad-escapables\",\n  \"roundId\": \"rnd_123\",\n  \"multiplier\": 3.42,\n  \"crashPoint\": 3.42,\n  \"wager\": 5.0,\n  \"payout\": 17.1,\n  \"currency\": \"USDT\",\n  \"playerId\": \"player_123\",\n  \"createdAt\": \"2024-01-01T12:00:00Z\",\n  \"completedAt\": \"2024-01-01T12:00:10Z\"\n}"
+		},
+		"notes": {
+			"title": "Implementation Notes & Best Practices",
+			"bullets": [
+				"Only your backend should call the crash engine APIs; never expose API keys to the client.",
+				"Use idempotency keys on create-round requests to protect against retries and double wagers.",
+				"Treat webhooks as the source of truth for accounting, with periodic reconciliation against your own ledger.",
+				"You can run multiple market-specific themes on top of the same crash engine configuration."
+			]
+		}
+	},
+	"drawballz-rushmore": {
+		"id": "drawballz-rushmore",
+		"name": "Drawballz | Rushmore Classics",
+		"badge": "Instant-Lotto Engine",
+		"heroTitle": "Drawballz | Rushmore Classics — Instant-Lotto Integration",
+		"heroSubtitle": "Instant and scheduled draw formats with OpenRNG-powered outcomes and themeable tickets, rooms, and mascots.",
+		"tags": ["Instant-Lotto", "Festival-Ready", "Multi-Region"],
+		"quickStart": {
+			"title": "Draw Engine Quick Start",
+			"steps": [
+				{
+					"step": "1",
+					"title": "Create a Ticket",
+					"description": "From your backend, call POST /v1/engines/drawballz-rushmore/tickets with playerId, currency, wager, and poolId. The response includes ticketId and optionally an inline result for instant games."
+				},
+				{
+					"step": "2",
+					"title": "Track Draw Status",
+					"description": "For scheduled draws, poll GET /v1/engines/drawballz-rushmore/draws/{drawId} or subscribe to draw.completed webhooks."
+				},
+				{
+					"step": "3",
+					"title": "Fetch Ticket Results",
+					"description": "Use GET /v1/engines/drawballz-rushmore/tickets/{ticketId} to retrieve matched balls, prize tier, and payout information for your player."
+				},
+				{
+					"step": "4",
+					"title": "Credit Winnings",
+					"description": "When a ticket is marked as settled, credit winnings to the player balance in your cashier or wallet systems and log the result for audits."
+				}
+			]
+		},
+		"endpoints": {
+			"title": "Key Draw Engine Endpoints",
+			"items": [
+				{
+					"method": "POST",
+					"path": "/v1/engines/drawballz-rushmore/tickets",
+					"summary": "Create a ticket or entry",
+					"description": "Creates a new ticket for a given draw pool. For instant games, may return the result inline.",
+					"examples": [
+						{
+							"label": "Create ticket (curl)",
+							"language": "bash",
+							"code": "curl -X POST \"$BASE_URL/v1/engines/drawballz-rushmore/tickets\" \\\n  -H \"Authorization: Bearer YOUR_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"playerId\": \"player_789\",\n    \"currency\": \"USDT\",\n    \"wager\": 2.0,\n    \"poolId\": \"daily_6of49\"\n  }'"
+						},
+						{
+							"label": "Create ticket response",
+							"language": "json",
+							"code": "{\n  \"ticketId\": \"tkt_123\",\n  \"engine\": \"drawballz-rushmore\",\n  \"poolId\": \"daily_6of49\",\n  \"drawId\": \"draw_456\",\n  \"state\": \"pending\",\n  \"wager\": 2.0,\n  \"currency\": \"USDT\"\n}"
+						}
+					]
+				},
+				{
+					"method": "GET",
+					"path": "/v1/engines/drawballz-rushmore/draws/{drawId}",
+					"summary": "Get draw status",
+					"description": "Returns the current status of a draw including scheduled time, closed state, and results when available.",
+					"examples": [
+						{
+							"label": "Get draw (curl)",
+							"language": "bash",
+							"code": "curl \"$BASE_URL/v1/engines/drawballz-rushmore/draws/draw_456\" \\\n  -H \"Authorization: Bearer YOUR_API_KEY\""
+						},
+						{
+							"label": "Draw status response",
+							"language": "json",
+							"code": "{\n  \"drawId\": \"draw_456\",\n  \"poolId\": \"daily_6of49\",\n  \"state\": \"completed\",\n  \"scheduledAt\": \"2024-01-01T18:00:00Z\",\n  \"completedAt\": \"2024-01-01T18:00:15Z\",\n  \"winningNumbers\": [3, 18, 24, 31, 42, 47]\n}"
+						}
+					]
+				},
+				{
+					"method": "GET",
+					"path": "/v1/engines/drawballz-rushmore/tickets/{ticketId}",
+					"summary": "Get ticket result",
+					"description": "Fetches the current or final result for a given ticket, including matched numbers and prize tier.",
+					"examples": [
+						{
+							"label": "Get ticket (curl)",
+							"language": "bash",
+							"code": "curl \"$BASE_URL/v1/engines/drawballz-rushmore/tickets/tkt_123\" \\\n  -H \"Authorization: Bearer YOUR_API_KEY\""
+						},
+						{
+							"label": "Ticket result response",
+							"language": "json",
+							"code": "{\n  \"ticketId\": \"tkt_123\",\n  \"drawId\": \"draw_456\",\n  \"numbers\": [1, 18, 24, 30, 42, 49],\n  \"matched\": 4,\n  \"tier\": \"TIER_3\",\n  \"wager\": 2.0,\n  \"payout\": 18.0,\n  \"currency\": \"USDT\",\n  \"state\": \"settled\"\n}"
+						}
+					]
+				}
+			]
+		},
+		"parameters": {
+			"title": "Common Ticket & Draw Parameters",
+			"items": [
+				{
+					"name": "playerId",
+					"type": "string",
+					"location": "body",
+					"required": true,
+					"description": "Your internal identifier for the player account."
+				},
+				{
+					"name": "currency",
+					"type": "string",
+					"location": "body",
+					"required": true,
+					"description": "ISO code or token symbol used for wagers (e.g. USD, EUR, USDT)."
+				},
+				{
+					"name": "wager",
+					"type": "number",
+					"location": "body",
+					"required": true,
+					"description": "Ticket stake amount in smallest currency unit."
+				},
+				{
+					"name": "poolId",
+					"type": "string",
+					"location": "body",
+					"required": true,
+					"description": "Identifier of the draw pool configuration (daily, hourly, festival-specific, etc.)."
+				},
+				{
+					"name": "drawId",
+					"type": "string",
+					"location": "path",
+					"required": false,
+					"description": "Draw identifier used when querying scheduled draw status."
+				},
+				{
+					"name": "ticketId",
+					"type": "string",
+					"location": "path",
+					"required": true,
+					"description": "Ticket identifier returned on creation, used to retrieve results."
+				}
+			]
+		},
+		"webhooks": {
+			"title": "Draw Engine Webhooks",
+			"subtitle": "Receive updates when draws close and tickets resolve.",
+			"events": [
+				{
+					"event": "draw.closed",
+					"description": "Emitted when no more tickets can be purchased for a scheduled draw."
+				},
+				{
+					"event": "draw.completed",
+					"description": "Contains the winning numbers and metadata for the draw."
+				},
+				{
+					"event": "ticket.settled",
+					"description": "Sent once a ticket’s prize tier has been evaluated and marked as won or lost."
+				}
+			],
+			"samplePayload": "{\n  \"event\": \"ticket.settled\",\n  \"engine\": \"drawballz-rushmore\",\n  \"ticketId\": \"tkt_123\",\n  \"drawId\": \"draw_456\",\n  \"matched\": 4,\n  \"tier\": \"TIER_3\",\n  \"wager\": 2.0,\n  \"payout\": 18.0,\n  \"currency\": \"USDT\",\n  \"playerId\": \"player_789\",\n  \"settledAt\": \"2024-01-01T18:00:20Z\"\n}"
+		},
+		"notes": {
+			"title": "Implementation Notes & Best Practices",
+			"bullets": [
+				"For scheduled draws, use webhooks as the primary signal and the draw status endpoint as a backup.",
+				"Map prize tiers into your own accounting system rather than relying solely on raw payouts.",
+				"Pools and draw schedules can be configured per market; speak with MonkGames if you need custom calendars.",
+				"Tickets, rooms, and mascot themes can be swapped without changing underlying pool math or compliance settings."
+			]
+		}
+	}
+}

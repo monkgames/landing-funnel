@@ -4,6 +4,48 @@
 		"subtitle": "MonkGames builds high-energy titles that are open to integrate, verifiable on-chain, and designed to be endlessly themed for specific markets and communities.",
 		"badge": "Flagship Experiences • Operator-Ready • Fair by Design"
 	},
+	"operatorBenefits": {
+		"title": "What Operators Get With MonkGames Titles",
+		"subtitle": "Beyond engines and artwork, MonkGames is built to drive measurable value for casinos, platforms, and aggregators.",
+		"items": [
+			{
+				"title": "Differentiated Content",
+				"description": "Stand out from look-alike lobbies with engines designed for high-energy play and themes crafted around specific cultures, festivals, and narratives.",
+				"icon": "🎭"
+			},
+			{
+				"title": "Provable Fairness Built In",
+				"description": "All sensitive outcomes are generated via OpenRNG, giving you transparent, auditable results that regulators and players can independently verify.",
+				"icon": "⚖️"
+			},
+			{
+				"title": "Faster Time to Market",
+				"description": "Open, documented engines and theme-ready architecture mean you can launch new experiences or seasonal variants much faster than traditional custom game development.",
+				"icon": "🚀"
+			}
+		]
+	},
+	"samplePreviews": {
+		"title": "See the Types of Experiences You Can Launch",
+		"subtitle": "From crash graphs tuned for streamers to ritual-inspired draw rooms, MonkGames engines are flexible canvases for operator-specific experiences.",
+		"items": [
+			{
+				"label": "Crash Graphs & High-Volatility Runs",
+				"description": "Crossroad Escapables showcases dynamic curves, real-time multipliers, and visually rich crash moments players love to watch and clip.",
+				"image": "https://source.unsplash.com/featured/640x360/?chart,neon"
+			},
+			{
+				"label": "Drawballz Instant-Lotto Rooms",
+				"description": "A modern take on classic draw formats, with space for mascots, rituals, and region-specific visual cues.",
+				"image": "https://source.unsplash.com/featured/640x360/?lottery,balls"
+			},
+			{
+				"label": "Themed Skins & Festival Variants",
+				"description": "Apply seasonal or culture-specific themes across tickets, UI, audio, and environments without touching core engine logic.",
+				"image": "https://source.unsplash.com/featured/640x360/?festival,lights"
+			}
+		]
+	},
 	"formats": {
 		"title": "Game Formats We Specialize In",
 		"blocks": [
@@ -95,7 +137,7 @@
 			"metrics": [
 				{
 					"label": "Max balls per draw",
-					"value": "Up to 6+ Bonus"
+					"value": "Up to 6 + Bonus"
 				},
 				{
 					"label": "Average round time",
@@ -131,6 +173,56 @@
 			]
 		}
 	],
+	"integration": {
+		"title": "How Operators Integrate MonkGames",
+		"steps": [
+			{
+				"step": "1",
+				"title": "Integrate the Engine",
+				"description": "Connect to our crash or instant-lotto engines via API or SDK. Use your existing account systems, wallets, or platform flows."
+			},
+			{
+				"step": "2",
+				"title": "Apply Themes",
+				"description": "Choose from marketplace themes or commission a one-of-one experience. Themes layer on visuals, audio, and UX without changing core logic."
+			},
+			{
+				"step": "3",
+				"title": "Launch & Iterate",
+				"description": "Go live, monitor performance, and roll out new campaigns or seasonal variants using the same underlying engines."
+			}
+		]
+	},
+	"metricsRow": {
+		"title": "Designed for Real-World Performance and Compliance",
+		"items": [
+			{
+				"label": "Integration Time",
+				"value": "Days, Not Months",
+				"description": "Our engines and docs are built to slot into existing stacks quickly, with support for common frameworks."
+			},
+			{
+				"label": "Fairness Transparency",
+				"value": "100% Auditable",
+				"description": "Every sensitive outcome has a traceable path in OpenRNG, helping you communicate trust to regulators and players."
+			},
+			{
+				"label": "Theme Agility",
+				"value": "Rapid Reskins",
+				"description": "Launch new market or seasonal themes without re-building or re-certifying the core engine."
+			}
+		]
+	},
+	"useCases": {
+		"title": "Where to Deploy MonkGames Titles",
+		"items": [
+			"Casino homepages & quick-play rails",
+			"Aggregator and platform lobbies",
+			"Web3 gaming hubs and communities",
+			"Mobile mini-apps and embedded game widgets",
+			"Festival, seasonal, and event-driven campaigns"
+		]
+	},
 	"globalFeatures": {
 		"title": "Every MonkGames title ships with the same reliability, fairness, and flexibility under the hood.",
 		"items": [
@@ -147,6 +239,66 @@
 				"description": "API-driven integration, SDKs for common stacks, and a roadmap that keeps operators, aggregators, and independent builders in mind."
 			}
 		]
+	},
+	"testimonials": {
+		"title": "What Early Partners Are Saying",
+		"items": [
+			{
+				"quote": "MonkGames is the first crash-style experience we tested where fairness is fully transparent. It changes the conversation we have with regulators and players.",
+				"author": "Early Partner Studio",
+				"role": "Head of Product"
+			},
+			{
+				"quote": "The ability to theme Drawballz around local festivals made it feel native to our audience, not imported.",
+				"author": "Regional Casino Operator",
+				"role": "VP, Growth"
+			},
+			{
+				"quote": "Open engines plus bespoke themes is exactly what we needed to stand out among aggregator-heavy content catalogs.",
+				"author": "Platform Partner",
+				"role": "Co-founder"
+			}
+		]
+	},
+	"comparison": {
+		"title": "How MonkGames Compares to Traditional Content Vendors",
+		"subtitle": "We combine the openness of web3-native thinking with the reliability and compliance focus expected in real-money gaming.",
+		"rows": [
+			{
+				"feature": "RNG Transparency",
+				"monkgames": "OpenRNG, auditable, exportable proofs",
+				"traditional": "Closed RNG, black-box outcomes"
+			},
+			{
+				"feature": "Theme Ownership",
+				"monkgames": "Exclusive, whitelabel themes per operator",
+				"traditional": "Shared reskins across many casinos"
+			},
+			{
+				"feature": "Engine Access",
+				"monkgames": "Open-source engines with docs & SDKs",
+				"traditional": "Locked, proprietary systems"
+			},
+			{
+				"feature": "Localization Depth",
+				"monkgames": "Cultural cues, rituals, and sound design",
+				"traditional": "Language and color swaps"
+			}
+		]
+	},
+	"finalCta": {
+		"title": "Ready to Bring Provably Fair, Theme-Ready Titles to Your Casino?",
+		"subtitle": "Explore our engines, preview themes, or talk to us about building one-of-one experiences for your markets.",
+		"primaryCta": {
+			"label": "Talk to Our Team",
+			"href": "/partner",
+			"variant": "primary"
+		},
+		"secondaryCta": {
+			"label": "Download Game One-Pager",
+			"href": "/resources/game-pack",
+			"variant": "secondary"
+		}
 	},
 	"faq": {
 		"title": "Games & Engine FAQ",

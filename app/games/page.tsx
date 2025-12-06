@@ -2,7 +2,6 @@
 'use client'
 
 import { useState } from 'react'
-import type { CSSProperties } from 'react'
 import gamesContent from '../../API/gamesContent.json'
 
 // reuse header + global styles from home
@@ -54,20 +53,93 @@ type FAQItem = {
 	answer: string
 }
 
+type OperatorBenefit = {
+	title: string
+	description: string
+	icon?: string
+}
+
+type PreviewItem = {
+	label: string
+	description: string
+	image: string
+}
+
+type IntegrationStep = {
+	step: string
+	title: string
+	description: string
+}
+
+type MetricItem = {
+	label: string
+	value: string
+	description: string
+}
+
+type Testimonial = {
+	quote: string
+	author: string
+	role: string
+}
+
+type ComparisonRow = {
+	feature: string
+	monkgames: string
+	traditional: string
+}
+
 type GamesContent = {
 	hero: {
 		title: string
 		subtitle: string
 		badge: string
 	}
+	operatorBenefits: {
+		title: string
+		subtitle: string
+		items: OperatorBenefit[]
+	}
+	samplePreviews: {
+		title: string
+		subtitle: string
+		items: PreviewItem[]
+	}
 	formats: {
 		title: string
 		blocks: FormatBlock[]
 	}
 	games: Game[]
+	integration: {
+		title: string
+		steps: IntegrationStep[]
+	}
+	metricsRow: {
+		title: string
+		items: MetricItem[]
+	}
+	useCases: {
+		title: string
+		items: string[]
+	}
 	globalFeatures: {
 		title: string
 		items: GlobalFeature[]
+	}
+	testimonials: {
+		title: string
+		items: Testimonial[]
+	}
+	comparison: {
+		title: string
+		subtitle: string
+		rows: ComparisonRow[]
+	}
+	finalCta: {
+		title: string
+		subtitle: string
+		primaryCta: CTA
+		secondaryCta: CTA
 	}
 	faq: {
 		title: string
@@ -113,7 +185,21 @@ function renderButton(cta: CTA, extraClass = '') {
 }
 
 export default function GamesPage() {
-	const { hero, formats, games, globalFeatures, faq } = content
+	const {
+		hero,
+		operatorBenefits,
+		samplePreviews,
+		formats,
+		games,
+		integration,
+		metricsRow,
+		useCases,
+		globalFeatures,
+		testimonials,
+		comparison,
+		finalCta,
+		faq,
+	} = content
 
 	return (
 		<div className="games-page">
@@ -182,6 +268,69 @@ export default function GamesPage() {
 								alt="MonkGames flagship experiences"
 							/>
 						</div>
+					</div>
+				</section>
+
+				{/* OPERATOR BENEFITS */}
+				<section
+					className="games-section games-section--band"
+					id="benefits">
+					<div className="games-section__header">
+						<h2 className="games-section__title">
+							{operatorBenefits.title}
+						</h2>
+						<p className="games-section__subtitle">
+							{operatorBenefits.subtitle}
+						</p>
+					</div>
+
+					<div className="mg-grid mg-grid-three mg-benefits-grid">
+						{operatorBenefits.items.map(item => (
+							<article
+								key={item.title}
+								className="mg-card mg-card-benefit">
+								{item.icon && (
+									<div className="mg-card-benefit__icon">
+										{item.icon}
+									</div>
+								)}
+								<h3 className="mg-card__title">{item.title}</h3>
+								<p className="mg-card__body">
+									{item.description}
+								</p>
+							</article>
+						))}
+					</div>
+				</section>
+
+				{/* SAMPLE PREVIEWS */}
+				<section className="games-section" id="previews">
+					<div className="games-section__header">
+						<h2 className="games-section__title">
+							{samplePreviews.title}
+						</h2>
+						<p className="games-section__subtitle">
+							{samplePreviews.subtitle}
+						</p>
+					</div>
+
+					<div className="mg-previews">
+						{samplePreviews.items.map(item => (
+							<article
+								key={item.label}
+								className="mg-preview-card">
+								<div className="mg-preview-card__media">
+									<SmartImage
+										src={item.image}
+										alt={item.label}
+									/>
+								</div>
+								<div className="mg-preview-card__body">
+									<h3>{item.label}</h3>
+									<p>{item.description}</p>
+								</div>
+							</article>
+						))}
 					</div>
 				</section>
 
@@ -307,8 +456,75 @@ export default function GamesPage() {
 					</div>
 				</section>
 
+				{/* INTEGRATION STEPS */}
+				<section className="games-section" id="integration">
+					<div className="games-section__header">
+						<h2 className="games-section__title">
+							{integration.title}
+						</h2>
+						<p className="games-section__subtitle">
+							From first conversation to production launch, we
+							keep the process simple and transparent.
+						</p>
+					</div>
+
+					<div className="mg-steps">
+						{integration.steps.map(step => (
+							<article key={step.step} className="mg-step">
+								<div className="mg-step__number">
+									{step.step}
+								</div>
+								<h3 className="mg-step__title">{step.title}</h3>
+								<p className="mg-step__body">
+									{step.description}
+								</p>
+							</article>
+						))}
+					</div>
+				</section>
+
+				{/* METRICS + USE CASES */}
+				<section
+					className="games-section games-section--band"
+					id="metrics">
+					<div className="games-section__header">
+						<h2 className="games-section__title">
+							{metricsRow.title}
+						</h2>
+					</div>
+
+					<div className="mg-metrics-row">
+						{metricsRow.items.map(item => (
+							<div
+								key={item.label}
+								className="mg-metric mg-metric--wide">
+								<span className="mg-metric__value">
+									{item.value}
+								</span>
+								<span className="mg-metric__label">
+									{item.label}
+								</span>
+								<p className="mg-metric__desc">
+									{item.description}
+								</p>
+							</div>
+						))}
+					</div>
+
+					<div className="mg-usecases">
+						<h3 className="mg-usecases__title">{useCases.title}</h3>
+						<div className="mg-usecases__chips">
+							{useCases.items.map(item => (
+								<span key={item} className="mg-usecase-chip">
+									{item}
+								</span>
+							))}
+						</div>
+					</div>
+				</section>
+
 				{/* SHARED ENGINE FEATURES */}
-				<section className="games-section games-section--band">
+				<section className="games-section games-section--band-soft">
 					<div className="games-section__header">
 						<h2 className="games-section__title">
 							Built on the MonkGames Engine Stack
@@ -332,6 +548,63 @@ export default function GamesPage() {
 					</div>
 				</section>
 
+				{/* TESTIMONIALS */}
+				<section className="games-section" id="testimonials">
+					<div className="games-section__header">
+						<h2 className="games-section__title">
+							{testimonials.title}
+						</h2>
+					</div>
+
+					<div className="mg-testimonials">
+						{testimonials.items.map(item => (
+							<article
+								key={item.quote}
+								className="mg-testimonial">
+								<p className="mg-testimonial__quote">
+									“{item.quote}”
+								</p>
+								<p className="mg-testimonial__author">
+									{item.author} · <span>{item.role}</span>
+								</p>
+							</article>
+						))}
+					</div>
+				</section>
+
+				{/* COMPARISON STRIP */}
+				<section className="games-section" id="comparison">
+					<div className="games-section__header">
+						<h2 className="games-section__title">
+							{comparison.title}
+						</h2>
+						<p className="games-section__subtitle">
+							{comparison.subtitle}
+						</p>
+					</div>
+
+					<div className="mg-compare">
+						<div className="mg-compare__header">
+							<span>Feature</span>
+							<span>MonkGames</span>
+							<span>Traditional Studios</span>
+						</div>
+						{comparison.rows.map(row => (
+							<div key={row.feature} className="mg-compare__row">
+								<span className="mg-compare__feature">
+									{row.feature}
+								</span>
+								<span className="mg-compare__mg">
+									{row.monkgames}
+								</span>
+								<span className="mg-compare__trad">
+									{row.traditional}
+								</span>
+							</div>
+						))}
+					</div>
+				</section>
+
 				{/* FAQ */}
 				<section className="games-section" id="faq">
 					<div className="games-section__header">
@@ -351,6 +624,25 @@ export default function GamesPage() {
 								<p>{item.answer}</p>
 							</details>
 						))}
+					</div>
+				</section>
+
+				{/* FINAL CTA */}
+				<section className="games-final-cta">
+					<div className="games-final-cta__inner">
+						<h2 className="games-final-cta__title">
+							{finalCta.title}
+						</h2>
+						<p className="games-final-cta__subtitle">
+							{finalCta.subtitle}
+						</p>
+						<div className="games-final-cta__actions">
+							{renderButton(finalCta.primaryCta)}
+							{renderButton(
+								finalCta.secondaryCta,
+								'mg-btn-ghost'
+							)}
+						</div>
 					</div>
 				</section>
 			</main>
