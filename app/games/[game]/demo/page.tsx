@@ -159,7 +159,7 @@ export default function GameDemoPage() {
 
 					<div className="home-header__actions">
 						<a href="/partner" className="btn btn-primary">
-							Partner With Us
+							Become Partner
 						</a>
 						<a href="/access" className="btn btn-secondary">
 							Operator Console

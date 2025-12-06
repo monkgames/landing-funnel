@@ -464,7 +464,7 @@ export default function OperatorConsolePage() {
 					<div className="home-header__actions">
 						{renderButton(
 							{
-								label: 'Partner With Us',
+								label: 'Become Partner',
 								href: '/#partner',
 								variant: 'secondary',
 							},

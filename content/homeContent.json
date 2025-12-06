@@ -7,11 +7,11 @@
 			{ "label": "Solutions", "href": "/solutions" },
 			{ "label": "Games", "href": "/games" },
 			{ "label": "Marketplace", "href": "/marketplace" },
-			{ "label": "Resources", "href": "#resources" }
+			{ "label": "Resources", "href": "/resources" }
 		],
 		"actions": [
 			{
-				"label": "Partner With Us",
+				"label": "Become Partner",
 				"href": "#partner",
 				"variant": "primary"
 			},
