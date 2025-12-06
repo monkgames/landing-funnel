@@ -1,0 +1,29 @@
+body {
+	font-family: var(--font-plus-jakarta-sans);
+	margin: 0px;
+}
+
+* {
+	font-family: var(--font-plus-jakarta-sans);
+	line-height: 18px;
+}
+
+a,
+b,
+p {
+	font-weight: 550;
+}
+
+a,
+li {
+	text-decoration: none;
+	list-style: none;
+}
+
+button {
+	font-weight: 550;
+	outline: none;
+	padding: 12px 18px;
+	margin: auto 12px;
+	border: none;
+}

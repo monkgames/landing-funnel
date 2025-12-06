@@ -1,0 +1,61 @@
+{
+	"meta": {
+		"title": "Our Core Principles",
+		"subtitle": "MonkGames operates with two philosophies as its two eyes: Open Fairness and Optimized Experience. Together they ensure games are both provably fair and meaningfully rooted in the cultures they serve.",
+		"badges": ["Open Fairness", "Optimized Experience", "Audit-Friendly"]
+	},
+	"principles": [
+		{
+			"id": "open-fairness",
+			"title": "Open Fairness",
+			"intro": "Fairness at MonkGames isn’t a claim — it’s a verifiable system.",
+			"body": "Built on OpenRNG Lib, our fully open-source library engineered specifically for secure, unbiased random number generation, every game outcome is generated using secure, unbiased, fully transparent logic that anyone can inspect.",
+			"highlights": [
+				"No closed algorithms",
+				"No hidden manipulation",
+				"No operator-controlled outcomes"
+			],
+			"details": "Every draw, result, and sensitive game decision is produced by an autonomous, transparent RNG engine designed for complete clarity.",
+			"traceabilityTitle": "Traceability is Built In",
+			"traceabilityItems": [
+				{
+					"label": "OpenRNG Audit Tools",
+					"description": "Allowing players, partners, and regulators to trace game outcomes back to their origin."
+				},
+				{
+					"label": "Open Whistleblow Forum",
+					"description": "A public reporting channel for verifying anomalies or inconsistencies."
+				}
+			],
+			"closing": "This ecosystem makes MonkGames fundamentally different from traditional iGaming studios that rely on proprietary, closed-room RNG systems. With OpenRNG Lib, fairness becomes provable — not promised."
+		},
+		{
+			"id": "optimized-experience",
+			"title": "Optimized Experience",
+			"intro": "Optimized Experience is our commitment to making play feel rare, rooted, and rewarding for specific cultures — not just a global skin dropped onto every site.",
+			"body": "While our game titles and engines are open-source for operators to integrate, the experiences players fall in love with are built through tailored themes. Localization for us goes beyond language into visual cues, sound design, pacing, rituals, and reward patterns that feel native to each market.",
+			"highlights": [
+				"Culturally tuned visual, sound, and UX systems",
+				"Exclusive white-label themes for enterprise casinos",
+				"Marketplace of pre-built and custom experiences"
+			],
+			"details": "There is no point in offering the exact same look, feel, and theme across dozens of casino sites. Players come back to the experiences that feel like they were made for them. Our role is to craft those experiences and give operators tools to stand apart from generic copy-paste content.",
+			"traceabilityTitle": "Experience Ownership & Integrity",
+			"traceabilityItems": [
+				{
+					"label": "Theme Marketplace",
+					"description": "Pre-built, regionally tuned themes offered via fixed pricing or auction, with clear ownership metadata."
+				},
+				{
+					"label": "Custom Studio Tracks",
+					"description": "Commissioned, from-scratch themes built around the culture, festivals, and symbols of your target market."
+				},
+				{
+					"label": "White-Label Exclusivity",
+					"description": "Enterprise themes are assigned to a single operator and never re-sold, protecting long-term differentiation."
+				}
+			],
+			"closing": "Optimized Experience ensures that while the underlying game logic may be shared and open, the world your players inhabit is distinctly yours. Combined with Open Fairness, this creates experiences that are both trustworthy and truly worth returning to."
+		}
+	]
+}

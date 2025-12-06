@@ -1,0 +1,52 @@
+{
+	"USPs": [
+		{
+			"id": "open-fairness",
+			"title": "Open Fairness",
+			"intro": "Fairness at MonkGames isn’t a claim — it’s a verifiable system.",
+			"body": "Built on OpenRNG Lib, our fully open-source library engineered specifically for secure, unbiased random number generation, every game outcome is generated using secure, unbiased, fully transparent logic that anyone can inspect. This means:",
+			"highlights": [
+				"No closed algorithms",
+				"No hidden manipulation",
+				"No operator-controlled outcomes"
+			],
+			"details": "Every draw, result, and sensitive game decision is produced by an autonomous, transparent RNG engine designed for complete clarity.",
+			"traceabilityTitle": "Traceability is built in",
+			"traceabilityItems": [
+				{
+					"label": "OpenRNG Audit Tools",
+					"description": "Allowing players, partners, and regulators to trace game outcomes back to their origin."
+				},
+				{
+					"label": "Open Whistleblow Forum",
+					"description": "A public reporting channel for verifying anomalies or inconsistencies."
+				}
+			],
+			"closing": "This ecosystem makes MonkGames fundamentally different from traditional iGaming studios that rely on proprietary, closed-room RNG systems. With OpenRNG Lib, fairness becomes provable — not promised."
+		},
+		{
+			"id": "optimized-experience",
+			"title": "Optimized Experience",
+			"intro": "Our games adapt to the player’s world.",
+			"body": "From language and themes to humor and in-game events, we tailor each experience to feel familiar and relevant in every region.",
+			"highlights": [
+				"Region-aware content and events",
+				"Language and tone that feel native",
+				"Mechanics tuned to local player behavior"
+			],
+			"details": "This makes our games feel more personal, more intuitive, and more engaging for players everywhere.",
+			"traceabilityTitle": "Designed for real players",
+			"traceabilityItems": [
+				{
+					"label": "Cultural Tuning",
+					"description": "We shape content to reflect local norms, references, and expectations."
+				},
+				{
+					"label": "Adaptive Game Flow",
+					"description": "Difficulty, pacing, and rewards can be tuned to different regions and audiences."
+				}
+			],
+			"closing": "The result is a portfolio of games that don’t just work globally—they feel like they were made for each market."
+		}
+	]
+}
