@@ -685,3 +685,52 @@ body {
 		grid-template-columns: 1.1fr 0.9fr 0.9fr 0.7fr 2fr;
 	}
 }
+
+/* INTEGRATION MODELS (WEB2 / WEB3) ------------------------------ */
+
+.integration-models {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 1.3rem;
+}
+
+.integration-model-card {
+	border-radius: 18px;
+	background-color: #050509;
+	border: 1px solid #262626;
+	padding: 1.3rem 1.4rem;
+	box-shadow: 0 16px 48px rgba(0, 0, 0, 0.9);
+}
+
+.integration-model-card__pill {
+	display: inline-flex;
+	padding: 0.18rem 0.7rem;
+	border-radius: 999px;
+	border: 1px solid #3f3f46;
+	font-size: 0.78rem;
+	color: #e4e4e7;
+	margin-bottom: 0.4rem;
+}
+
+.integration-model-card h3 {
+	font-size: 1rem;
+	margin-bottom: 0.2rem;
+}
+
+.integration-model-card__subtitle {
+	font-size: 0.88rem;
+	color: var(--text-soft);
+	margin-bottom: 0.55rem;
+}
+
+.integration-model-card ul {
+	margin: 0;
+	padding-left: 1.1rem;
+	font-size: 0.88rem;
+	color: var(--text-soft);
+	line-height: 1.6;
+}
+
+.integration-model-card li + li {
+	margin-top: 0.3rem;
+}

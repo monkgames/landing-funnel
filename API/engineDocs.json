@@ -31,6 +31,33 @@
 				}
 			]
 		},
+		"models": {
+			"title": "Integration Models: Web2 & Web3",
+			"web2": {
+				"title": "Web2: Custodial Casino / Aggregator",
+				"subtitle": "Best for traditional platforms that already manage accounts, KYC, and balances.",
+				"bullets": [
+					"Players sign in using your existing account system; you own KYC and AML.",
+					"Your frontend renders the crash UI and talks only to your backend (never directly to MonkGames).",
+					"Your backend calls MonkGames crash APIs server-to-server, using your API keys and internal playerId references.",
+					"All money lives in your cashier or wallet system; MonkGames never holds funds — we only compute outcomes.",
+					"You listen to round.* webhooks and update your own ledger for wagers, wins, and refunds.",
+					"Use this model if you operate fiat, off-chain tokens, or any fully custodial environment."
+				]
+			},
+			"web3": {
+				"title": "Web3: Wallet-Based or Hybrid",
+				"subtitle": "Best for dapps and operators where the player’s wallet is the source of truth.",
+				"bullets": [
+					"Players connect a web3 wallet (e.g. MetaMask, WalletConnect). You map walletAddress → internal playerId in your backend.",
+					"Your smart contract or backend escrows the wager (on-chain or in a custodial balance) before calling MonkGames.",
+					"Your backend still calls MonkGames APIs server-to-server, but attaches metadata like walletAddress and txHash for traceability.",
+					"On round completion, you verify the result and then trigger on-chain settlement via your own contract logic.",
+					"You can optionally publish MonkGames RNG proofs or round hashes on-chain for verifiable transparency.",
+					"Use this model if you want crash gameplay that feels web3-native but keeps heavy math and regulation in your backend."
+				]
+			}
+		},
 		"endpoints": {
 			"title": "Key Crash Engine Endpoints",
 			"items": [
@@ -183,6 +210,33 @@
 					"description": "When a ticket is marked as settled, credit winnings to the player balance in your cashier or wallet systems and log the result for audits."
 				}
 			]
+		},
+		"models": {
+			"title": "Integration Models: Web2 & Web3",
+			"web2": {
+				"title": "Web2: Hosted Casino / Lottery Operator",
+				"subtitle": "Best for operators that already run centralized lottery or instant-win games.",
+				"bullets": [
+					"Players log in using your existing account; you maintain player profiles, limits, and KYC.",
+					"Your lobby or game page calls your backend to buy tickets; the backend calls MonkGames ticket APIs with your playerId.",
+					"You keep all money in your own balance system; MonkGames only provides outcomes and prize tiers.",
+					"You can map MonkGames poolId and tier to your own product catalog and bonus / loyalty systems.",
+					"Webhooks such as draw.completed and ticket.settled drive balance updates and notification emails or SMS.",
+					"Use this model if you are replacing or upgrading existing instant-lotto or keno-style content."
+				]
+			},
+			"web3": {
+				"title": "Web3: On-Chain Pools & Tickets",
+				"subtitle": "Best for dapps that want transparent, ritual-style draws powered by player wallets.",
+				"bullets": [
+					"Players join pools using a wallet, sending funds into your draw smart contract or a custodial pool.",
+					"Your backend or an off-chain service calls MonkGames APIs with a playerId that is mapped to walletAddress on your side.",
+					"When draws complete, you receive draw.completed and ticket.settled webhooks and update on-chain state via contract calls.",
+					"You can publish round hashes and winning numbers on-chain to keep a verifiable public record.",
+					"Advanced setups can let players verify that their ticket commitment was included in the pool before the draw.",
+					"Use this model if you want festival-style, community draws that feel native to on-chain ecosystems."
+				]
+			}
 		},
 		"endpoints": {
 			"title": "Key Draw Engine Endpoints",

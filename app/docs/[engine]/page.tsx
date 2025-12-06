@@ -37,6 +37,12 @@ type QuickStep = {
 	description: string
 }
 
+type IntegrationModel = {
+	title: string
+	subtitle: string
+	bullets: string[]
+}
+
 type EngineDocs = {
 	id: string
 	name: string
@@ -47,6 +53,11 @@ type EngineDocs = {
 	quickStart: {
 		title: string
 		steps: QuickStep[]
+	}
+	models: {
+		title: string
+		web2: IntegrationModel
+		web3: IntegrationModel
 	}
 	endpoints: {
 		title: string
@@ -247,6 +258,52 @@ export default function EngineDocsPage() {
 								</p>
 							</article>
 						))}
+					</div>
+				</section>
+
+				{/* INTEGRATION MODELS: WEB2 & WEB3 */}
+				<section className="docs-section" id="models">
+					<div className="docs-section__header">
+						<h2 className="docs-section__title">
+							{docs.models.title}
+						</h2>
+						<p className="docs-section__subtitle">
+							Choose the model that matches how you manage
+							identity, balances, and compliance. The same engine
+							works for both.
+						</p>
+					</div>
+
+					<div className="integration-models">
+						<article className="integration-model-card">
+							<span className="integration-model-card__pill">
+								Web2 / Custodial
+							</span>
+							<h3>{docs.models.web2.title}</h3>
+							<p className="integration-model-card__subtitle">
+								{docs.models.web2.subtitle}
+							</p>
+							<ul>
+								{docs.models.web2.bullets.map(b => (
+									<li key={b}>{b}</li>
+								))}
+							</ul>
+						</article>
+
+						<article className="integration-model-card">
+							<span className="integration-model-card__pill">
+								Web3 / Wallet-Based
+							</span>
+							<h3>{docs.models.web3.title}</h3>
+							<p className="integration-model-card__subtitle">
+								{docs.models.web3.subtitle}
+							</p>
+							<ul>
+								{docs.models.web3.bullets.map(b => (
+									<li key={b}>{b}</li>
+								))}
+							</ul>
+						</article>
 					</div>
 				</section>
 
