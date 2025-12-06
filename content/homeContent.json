@@ -3,12 +3,10 @@
 		"brand": "MonkGames",
 		"logo": "https://picsum.photos/seed/monk-logo/160/40",
 		"navLinks": [
-			{ "label": "Solutions", "href": "#solutions" },
-			{ "label": "Games", "href": "#games" },
-			{ "label": "Theme Studio", "href": "#themes" },
-			{ "label": "Technology", "href": "#technology" },
-			{ "label": "Resources", "href": "#resources" },
-			{ "label": "Company", "href": "#company" }
+			{ "label": "Games", "href": "/games" },
+			{ "label": "Solutions", "href": "/solutions" },
+			{ "label": "Marketplace", "href": "/marketplace" },
+			{ "label": "Resources", "href": "#resources" }
 		],
 		"actions": [
 			{

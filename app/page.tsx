@@ -3,7 +3,7 @@
 import type { CSSProperties } from 'react'
 import homeContent from '../content/homeContent.json'
 import principlesData from '../content/principles.json'
-import './Home.css'
+import './styles/Home.css'
 
 type Variant = 'primary' | 'secondary' | 'ghost'
 

@@ -1,0 +1,172 @@
+{
+	"hero": {
+		"title": "Crash and Instant-Lotto Engines, Ready for Your Casino.",
+		"subtitle": "MonkGames builds high-energy titles that are open to integrate, verifiable on-chain, and designed to be endlessly themed for specific markets and communities.",
+		"badge": "Flagship Experiences • Operator-Ready • Fair by Design"
+	},
+	"formats": {
+		"title": "Game Formats We Specialize In",
+		"blocks": [
+			{
+				"id": "crash",
+				"title": "Crash Experiences",
+				"badge": "⚡ High-Energy Crash",
+				"description": "Real-time multipliers, split-second decisions, and social-friendly tension that keeps players watching and returning.",
+				"bullets": [
+					"Perfect for streamers, communities, and live events",
+					"Configurable volatility, pacing, and cash-out logic",
+					"Optimized for desktop, mobile, and embedded widgets"
+				]
+			},
+			{
+				"id": "instant-lotto",
+				"title": "Instant-Lotto & Draw Games",
+				"badge": "🎱 Instant-Lotto",
+				"description": "Fast-resolving, transparent draw mechanics that feel familiar to lottery players while benefiting from provable fairness.",
+				"bullets": [
+					"Instant or scheduled draw flows depending on market",
+					"Configurable pools, prize ladders, and return profiles",
+					"Ideal foundation for festival or ritual-based themes"
+				]
+			}
+		]
+	},
+	"games": [
+		{
+			"id": "crossroad-escapables",
+			"name": "Crossroad Escapables",
+			"format": "Crash Engine",
+			"label": "High-Intensity Crash Experience",
+			"tagline": "Ride the curve, read the room, and escape before the crash.",
+			"description": "Crossroad Escapables is a crash-style engine built for modern attention spans. Operators get tunable volatility and pacing. Players get an addictive curve they can read, react to, and share.",
+			"image": "https://source.unsplash.com/featured/900x560/?graph,chart,neon",
+			"tags": [
+				"Crash Game",
+				"Streamer-Friendly",
+				"Real-Time Multipliers"
+			],
+			"metrics": [
+				{
+					"label": "Max supported multiplier",
+					"value": "x10,000+"
+				},
+				{
+					"label": "Round resolution",
+					"value": "< 200ms"
+				},
+				{
+					"label": "Supported skins at once",
+					"value": "Multi-theme"
+				}
+			],
+			"features": [
+				"OpenRNG-backed crash logic with verifiable rounds",
+				"Supports multiple regional themes on the same underlying engine",
+				"Configurable volatility profiles per market or operator brand",
+				"Optional spectator modes for streamers and community events"
+			],
+			"ctas": [
+				{
+					"label": "View Game Page",
+					"href": "/games/crossroad-escapables",
+					"variant": "primary"
+				},
+				{
+					"label": "Play Demo",
+					"href": "/games/crossroad-escapables#demo",
+					"variant": "secondary"
+				},
+				{
+					"label": "Integration Docs",
+					"href": "/docs/crossroad-escapables",
+					"variant": "ghost"
+				}
+			]
+		},
+		{
+			"id": "drawballz-rushmore",
+			"name": "Drawballz | Rushmore Classics",
+			"format": "Instant-Lotto Engine",
+			"label": "Instant Draw & Ritual Lotto",
+			"tagline": "Classic draw formats, reimagined for themed, festival-ready experiences.",
+			"description": "Drawballz powers instant and scheduled draw formats that can be themed around festivals, rituals, and cultural moments. Operators run familiar mechanics with modern presentation and provable fairness.",
+			"image": "https://source.unsplash.com/featured/900x560/?lottery,balls,draw",
+			"tags": ["Instant-Lotto", "Festival-Ready", "Multi-Region"],
+			"metrics": [
+				{
+					"label": "Max balls per draw",
+					"value": "Up to 6+ Bonus"
+				},
+				{
+					"label": "Average round time",
+					"value": "5–30s"
+				},
+				{
+					"label": "Theme layers",
+					"value": "Tickets, Rooms, Mascots"
+				}
+			],
+			"features": [
+				"Transparent draw generation using OpenRNG",
+				"Supports both instant and scheduled draw flows",
+				"Fully theme-able tickets, draw rooms, characters, and soundscapes",
+				"Designed for local rituals, festivals, and culturally specific moments"
+			],
+			"ctas": [
+				{
+					"label": "View Game Page",
+					"href": "/games/drawballz-rushmore",
+					"variant": "primary"
+				},
+				{
+					"label": "Play Demo",
+					"href": "/games/drawballz-rushmore#demo",
+					"variant": "secondary"
+				},
+				{
+					"label": "Integration Docs",
+					"href": "/docs/drawballz-rushmore",
+					"variant": "ghost"
+				}
+			]
+		}
+	],
+	"globalFeatures": {
+		"title": "Every MonkGames title ships with the same reliability, fairness, and flexibility under the hood.",
+		"items": [
+			{
+				"title": "Provably Fair by Default",
+				"description": "All engines integrate with OpenRNG, giving you transparent, auditable results with clear round histories and exportable proofs for regulators."
+			},
+			{
+				"title": "Theme-Ready Architecture",
+				"description": "Visuals, audio, UX flow, and copy are separated from core logic. That means you can apply marketplace themes or commission one-of-one experiences without touching the engine."
+			},
+			{
+				"title": "Built for Operators & Builders",
+				"description": "API-driven integration, SDKs for common stacks, and a roadmap that keeps operators, aggregators, and independent builders in mind."
+			}
+		]
+	},
+	"faq": {
+		"title": "Games & Engine FAQ",
+		"items": [
+			{
+				"question": "Are MonkGames titles plug-and-play?",
+				"answer": "We provide engine-level integrations via API and SDKs. Frontend components can be adapted to your existing stack, and themes are layered on top of the same core engine logic."
+			},
+			{
+				"question": "How do you handle fairness and RNG?",
+				"answer": "All sensitive outcomes are generated via OpenRNG, our open-source, provably fair RNG stack. Operators and regulators can audit seeds, outcomes, and round histories independently."
+			},
+			{
+				"question": "Can we deploy multiple themes on the same game?",
+				"answer": "Yes. A single engine instance can power multiple themes — for different brands, markets, or seasonal campaigns — without duplicating the underlying logic."
+			},
+			{
+				"question": "Do you support both web2 and web3 flows?",
+				"answer": "Yes. Engines can run in traditional account-based environments, wallet-based web3 flows, or hybrids, depending on your jurisdiction and platform."
+			}
+		]
+	}
+}
